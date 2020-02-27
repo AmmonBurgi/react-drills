@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Todo from './Components/Todo'
+class App extends Component{
+  constructor(){
+    super()
+    this.state = {
+      toDo: [],
+      theInput: ''
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  
+  
+  }
 
-function App() {
+  
+
+  handleChange(val){
+    this.setState({theInput: val})
+  }
+  handleClick(){
+    this.setState({
+      toDo: [...this.state.toDo, this.state.theInput],
+      theInput: ""
+    })
+  }
+
+
+  render(){
+    
+    console.log(Todo)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Todo 
+        input={this.handleChange}
+        click={this.handleClick} 
+        theValue={this.state.theInput}/>
+       <div>
+  {this.state.toDo.map((e, i) => <p>{i+1}{'. '}{e} </p>)}
+       </div>
     </div>
   );
+  }
 }
 
 export default App;

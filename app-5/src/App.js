@@ -1,26 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Image from './Components/Image';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  render(){
+    return(
+      <div>
+        <Image url={'https://cdn.clipart.email/c7eafbbdb19600e9496bd00d1d957dc9_28-collection-of-jordan-logo-coloring-pages-high-quality-free-_1000-1000.jpeg'}/>
+      </div>
+    )
+  }
 }
 
 export default App;
