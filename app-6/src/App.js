@@ -37,7 +37,7 @@ class App extends Component{
         click={this.handleClick} 
         theValue={this.state.theInput}/>
        <div>
-  {this.state.toDo.map((e, i) => <p>{i+1}{'. '}{e} </p>)}
+        {this.state.toDo.map((e, i) => <p>{i+1}{'. '}{e} </p>)}
        </div>
     </div>
   );
