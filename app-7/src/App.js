@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
-import './App.css';
-import NewTask from './Components/NewTask';
-import List from './Components/List';
-// import ToDo from './Components/ToDo'
+import React, {Component} from 'react'
+import Input from './Components/Input'
+import Display from './Components/Display'
 class App extends Component{
   constructor(){
     super()
-    this.state = {
-      newList: [],
-      theInput: ''
+    this.state={
+      data: [],
+      newTask: ''
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
-handleChange(val){
-  this.setState({theInput: val})
-}
-handleClick(){
-  this.setState({
-    newList: [...this.state.newList, this.state.theInput],
-  theInput: ''
-  })
-}
-render(){
-  // console.log(<List />)
-  return (
-    <div className="App">
-     <NewTask 
-      change={this.handleChange}
-      click={this.handleClick}
-      theValue={this.handleChange}
-      />
-    <List proList={this.state.newList} />
-     {/* <div>
-       {this.state.newList.map((element) => {return <p>{element}</p>})}
-     </div> */}
-    </div>
-  );
-}
+  handleInput=(val)=>{
+    this.setState({newTask: val})
   }
-export default App;
+  handleClick=()=>{
+    let newData = this.state.data
+    newData.push(this.state.newTask)
+    this.setState({
+      data: newData,
+      newTask: ''
+    })}
+
+  render(){
+    return(
+      <div>
+        <h4>My to-do list:</h4>
+        <Input 
+        theChange={this.handleInput} 
+        theClick={this.handleClick}
+        theValue={this.state.newTask}/>
+        <Display theData={this.state.data}/>
+      </div>
+    )
+  }
+}
+export default App
